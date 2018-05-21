@@ -62,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Toast.makeText(context, "Insertado con exito", Toast.LENGTH_SHORT).show();
         return true;
     }
-    public Nota findUser(String evaluacion){
+    public Nota findNota(String evaluacion){
         Nota n;
 
         String[] parametros = {evaluacion};

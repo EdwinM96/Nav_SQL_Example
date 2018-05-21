@@ -4,25 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.Buscar">
+    android:layout_centerHorizontal="true"
+    tools:context=".fragment.Modificar">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:hint="@string/nombre"
-            android:id="@+id/editText_buscar"/>
-        <Button
+        android:layout_marginTop="20dp">
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Buscar"
-            android:id="@+id/boton_mostrar"
-            />
+            android:text="@string/nombre"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/editText_evaluacion_modificar"
+            android:hint="Examen 1"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,15 +36,21 @@
             android:layout_weight="1"
             android:text="@string/nota"
             android:gravity="center"
-            android:textSize="24sp"
+            android:textSize="24dp"
             />
-        <TextView
+        <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="24sp"
-            android:id="@+id/nota_buscar"
+            android:hint="8.5"
+            android:id="@+id/editText_nota_modificar"
             />
+
     </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_modificar"
+        />
 
 </LinearLayout>

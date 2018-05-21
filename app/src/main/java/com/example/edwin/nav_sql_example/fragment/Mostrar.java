@@ -7,32 +7,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.edwin.nav_sql_example.R;
-import com.example.edwin.nav_sql_example.modelo.Nota;
-import com.example.edwin.nav_sql_example.sql.DBHelper;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Buscar.OnFragmentInteractionListener} interface
+ * {@link Mostrar.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Buscar#newInstance} factory method to
+ * Use the {@link Mostrar#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Buscar extends Fragment {
-
+public class Mostrar extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    private EditText evaluacion;
-    private TextView notaTxt;
-    private Button botonBuscar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -40,7 +31,7 @@ public class Buscar extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Buscar() {
+    public Mostrar() {
         // Required empty public constructor
     }
 
@@ -50,11 +41,11 @@ public class Buscar extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Buscar.
+     * @return A new instance of fragment Mostrar.
      */
     // TODO: Rename and change types and number of parameters
-    public static Buscar newInstance(String param1, String param2) {
-        Buscar fragment = new Buscar();
+    public static Mostrar newInstance(String param1, String param2) {
+        Mostrar fragment = new Mostrar();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,29 +66,7 @@ public class Buscar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_buscar, container, false);
-        initialize(view);
-        botonBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Nota nota = DBHelper.myDB.findNota(evaluacion.getText().toString());
-                if(nota == null){
-                    Toast.makeText(getActivity(),"La evaluaciòn no existe",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    notaTxt.setText(nota.getNota()+"");
-                }
-
-            }
-        });
-
-
-        return view;
-    }
-    public void initialize(View v){
-        evaluacion = v.findViewById(R.id.editText_buscar);
-        notaTxt = v.findViewById(R.id.nota_mostrar);
-        botonBuscar = v.findViewById(R.id.boton_mostrar);
+        return inflater.inflate(R.layout.fragment_mostrar, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
