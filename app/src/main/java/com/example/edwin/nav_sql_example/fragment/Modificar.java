@@ -77,10 +77,15 @@ public class Modificar extends Fragment {
             @Override
             public void onClick(View v) {
                 DBHelper.myDB.editUser(new Nota(evaluacionIngresada.getText().toString(), Double.parseDouble(notaIngresada.getText().toString())));
+                clear();
             }
         });
 
         return view;
+    }
+    public void clear(){
+        notaIngresada.setText("");
+        evaluacionIngresada.setText("");
     }
 
     public void initialize(View v){

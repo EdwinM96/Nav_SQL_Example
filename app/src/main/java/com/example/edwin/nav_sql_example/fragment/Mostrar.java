@@ -4,11 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.edwin.nav_sql_example.R;
+import com.example.edwin.nav_sql_example.adapter.RecyclerViewAdapter;
+import com.example.edwin.nav_sql_example.modelo.Nota;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,9 +30,11 @@ public class Mostrar extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rcv;
+    private RecyclerViewAdapter rcvA;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private ArrayList<Nota> mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -57,7 +65,7 @@ public class Mostrar extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam1 = (ArrayList<Nota>) getArguments().getSerializable(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -65,8 +73,14 @@ public class Mostrar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mostrar, container, false);
+        View v = inflater.inflate(R.layout.fragment_mostrar, container, false);
+        rcv = v.findViewById(R.id.recyclerView_mostrar);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = linearLayoutManager;
+        rcv.setLayoutManager(layoutManager);
+        rcvA = new RecyclerViewAdapter(getActivity(),mParam1);
+        rcv.setAdapter(rcvA);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
